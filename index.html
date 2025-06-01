@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .scrolled {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+    <style>
+        .fade-in {
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        .slide-in {
+            animation: slideIn 1s ease-in-out forwards;
+        }
+
+        .zoom-in {
+            animation: zoomIn 1s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-50%);
+                opacity: 0
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(1.2);
+                opacity: 0
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1
+            }
+        }
+    </style>
+</head>
+
+<body id="top" class="bg-gray-100">
+
+    <!-- Navbar -->
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300">
+        <nav class="max-w-7xl mx-auto flex justify-between items-center p-4">
+            <h1 class="text-2xl font-bold text-red-600">Foodie</h1>
+
+            <!-- Desktop Menu -->
+            <ul class="hidden md:flex gap-6 text-gray-700 font-medium relative">
+                <li><a href="#home" class="hover:text-red-600">Home</a></li>
+
+                <!-- Dropdown Menu -->
+                <li class="relative group">
+                    <a href="#menu" class="hover:text-red-600 cursor-pointer">Menu</a>
+                    <ul
+                        class="absolute left-0 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white shadow-lg rounded-md py-2 mt-2 w-40 text-sm z-10">
+                        <li><a href="#" class="block px-4 py-2 hover:bg-red-100">Breakfast</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-red-100">Lunch</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-red-100">Dinner</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#booking" class="hover:text-red-600">Table</a></li>
+                <li><a href="#footer" class="hover:text-red-600">Contact</a></li>
+            </ul>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="menuBtn" class="text-2xl text-gray-700 focus:outline-none">
+                    ☰
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white px-6 pb-4 shadow">
+            <ul class="flex flex-col gap-2">
+                <li><a href="#home" class="block py-2 border-b hover:text-red-600">Home</a></li>
+
+                <!-- Mobile Dropdown -->
+                <li>
+                    <button id="dropdownBtn" class="w-full text-left py-2 border-b hover:text-red-600">
+                        Menu ▼
+                    </button>
+                    <ul id="dropdownMenu" class="hidden flex flex-col pl-4 border-l border-red-100">
+                        <li><a href="#" class="block py-1 text-sm hover:text-red-600">Breakfast</a></li>
+                        <li><a href="#" class="block py-1 text-sm hover:text-red-600">Lunch</a></li>
+                        <li><a href="#" class="block py-1 text-sm hover:text-red-600">Dinner</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#about" class="block py-2 border-b hover:text-red-600">About</a></li>
+                <li><a href="#contact" class="block py-2 hover:text-red-600">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Scripts -->
+    <script>
+        // Scroll navbar effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Mobile dropdown toggle
+        const dropdownBtn = document.getElementById('dropdownBtn');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        dropdownBtn.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('hidden');
+        });
+    </script>
+
+    <section class="relative w-full h-[80vh] md:h-[90vh] overflow-hidden mt-[60px]">
+        <div id="slides" class="relative w-full h-full">
+            <!-- Slide 1 -->
+            <div class="absolute inset-0 bg-cover bg-center hidden" style="background-image: url('images/banner.png');"
+                data-animation="fade-in">
+                <div class="w-full h-full bg-black bg-opacity-50 flex items-center justify-center px-4 text-center">
+                    <div class="text-white max-w-xl">
+                        <h2 class="text-3xl md:text-5xl font-bold mb-4">Welcome to Flavor Town</h2>
+                        <a href="#menu"
+                            class="bg-red-600 hover:bg-red-700 px-6 py-3 text-white rounded-lg font-medium text-sm md:text-base">See
+                            Menu</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="absolute inset-0 bg-cover bg-center hidden" style="background-image: url('images/banner1.png');"
+                data-animation="slide-in">
+                <div class="w-full h-full bg-black bg-opacity-40 flex items-center justify-center px-4 text-center">
+                    <div class="text-white max-w-xl">
+                        <h2 class="text-3xl md:text-5xl font-bold mb-4">Juicy Grilled Perfection</h2>
+                        <a href="#menu"
+                            class="bg-red-600 hover:bg-red-700 px-6 py-3 text-white rounded-lg font-medium text-sm md:text-base">Order
+                            Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="absolute inset-0 bg-cover bg-center hidden" style="background-image: url('images/banner2.png');"
+                data-animation="zoom-in">
+                <div class="w-full h-full bg-black bg-opacity-40 flex items-center justify-center px-4 text-center">
+                    <div class="text-white max-w-xl">
+                        <h2 class="text-3xl md:text-5xl font-bold mb-4">Italian Pasta Magic</h2>
+                        <a href="#menu"
+                            class="bg-red-600 hover:bg-red-700 px-6 py-3 text-white rounded-lg font-medium text-sm md:text-base">Try
+                            It</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <button onclick="prevSlide()"
+            class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white text-black p-2 md:p-3 rounded-full shadow hover:bg-gray-200 z-10 text-xl">❮</button>
+        <button onclick="nextSlide()"
+            class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white text-black p-2 md:p-3 rounded-full shadow hover:bg-gray-200 z-10 text-xl">❯</button>
+    </section>
+
+    <!-- JavaScript Slider Logic -->
+    <script>
+        const slides = document.querySelectorAll('#slides > div');
+        let current = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.add('hidden');
+                slide.classList.remove('fade-in', 'slide-in', 'zoom-in');
+                if (i === index) {
+                    const animation = slide.dataset.animation;
+                    slide.classList.remove('hidden');
+                    slide.classList.add(animation);
+                }
+            });
+        }
+
+        function nextSlide() {
+            current = (current + 1) % slides.length;
+            showSlide(current);
+        }
+
+        function prevSlide() {
+            current = (current - 1 + slides.length) % slides.length;
+            showSlide(current);
+        }
+
+        // Autoplay
+        setInterval(nextSlide, 5000);
+
+        // Initial load
+        showSlide(current);
+    </script>
+
+    <!-- Table Booking Section -->
+    <section id="booking" class="py-16 bg-gray-100">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8">Reserve Your Table</h2>
+
+            <form class="bg-white p-6 md:p-10 rounded-lg shadow-md space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Name -->
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500" />
+                    </div>
+
+                    <!-- Phone -->
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="e.g. 017xxxxxxx" required
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500" />
+                    </div>
+
+                    <!-- Date -->
+                    <div>
+                        <label for="date" class="block text-sm font-medium text-gray-700">Booking Date</label>
+                        <input type="date" id="date" name="date" required
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500" />
+                    </div>
+
+                    <!-- Time -->
+                    <div>
+                        <label for="time" class="block text-sm font-medium text-gray-700">Time</label>
+                        <input type="time" id="time" name="time" required
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500" />
+                    </div>
+
+                    <!-- Guests -->
+                    <div>
+                        <label for="guests" class="block text-sm font-medium text-gray-700">No. of Guests</label>
+                        <input type="number" id="guests" name="guests" min="1" max="20" placeholder="1-20" required
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500" />
+                    </div>
+
+                    <!-- Table Type -->
+                    <div>
+                        <label for="tableType" class="block text-sm font-medium text-gray-700">Table Type</label>
+                        <select id="tableType" name="tableType"
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500">
+                            <option>Indoor</option>
+                            <option>Outdoor</option>
+                            <option>Private Room</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <button type="submit"
+                        class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg text-lg font-semibold shadow">
+                        Book Now
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-10">Our Menu</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+
+                <!-- Menu Item -->
+                <div
+                    class="bg-gray-50 rounded-lg shadow transition-transform transform hover:scale-105 hover:shadow-xl">
+                    <img src="images/f1.jpg" alt="Burger" class="w-full h-48 object-cover rounded-t-lg">
+                    <div class="p-5">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Classic Beef Burger</h3>
+                        <p class="text-gray-600 text-sm mb-3">Juicy beef patty with fresh lettuce, tomato, and cheese.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 font-bold text-lg">$8.99</span>
+                            <button
+                                class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 text-sm">Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu Item -->
+                <div
+                    class="bg-gray-50 rounded-lg shadow transition-transform transform hover:scale-105 hover:shadow-xl">
+                    <img src="images/f2.jpg" alt="Pizza" class="w-full h-48 object-cover rounded-t-lg">
+                    <div class="p-5">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Margherita Pizza</h3>
+                        <p class="text-gray-600 text-sm mb-3">Fresh mozzarella, tomato sauce & basil on crispy crust.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 font-bold text-lg">$12.50</span>
+                            <button
+                                class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 text-sm">Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu Item -->
+                <div
+                    class="bg-gray-50 rounded-lg shadow transition-transform transform hover:scale-105 hover:shadow-xl">
+                    <img src="images/f3.jpg" alt="Pasta" class="w-full h-48 object-cover rounded-t-lg">
+                    <div class="p-5">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Creamy Alfredo Pasta</h3>
+                        <p class="text-gray-600 text-sm mb-3">Rich & creamy Alfredo sauce with fettuccine and chicken.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 font-bold text-lg">$10.75</span>
+                            <button
+                                class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 text-sm">Order</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Large List Menu Section -->
+    <section id="menu-list" class="py-16 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Our Extensive Menu</h2>
+
+            <div class="space-y-10">
+                <!-- Starters -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-red-600 mb-6 border-b-2 border-red-600 pb-2">Starters</h3>
+
+                    <div class="space-y-6">
+                        <div class="flex justify-between border-b border-gray-300 pb-4">
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-900">Bruschetta</h4>
+                                <p class="text-gray-600 mt-1 text-sm">Grilled bread topped with diced tomatoes, garlic,
+                                    basil, and olive oil.</p>
+                            </div>
+                            <div class="text-red-600 font-bold text-lg">$5.50</div>
+                        </div>
+
+                        <div class="flex justify-between border-b border-gray-300 pb-4">
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-900">Stuffed Mushrooms</h4>
+                                <p class="text-gray-600 mt-1 text-sm">Mushrooms filled with cheese and herbs, baked to
+                                    perfection.</p>
+                            </div>
+                            <div class="text-red-600 font-bold text-lg">$6.75</div>
+                        </div>
+
+                        <div class="flex justify-between border-b border-gray-300 pb-4">
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-900">Chicken Wings</h4>
+                                <p class="text-gray-600 mt-1 text-sm">Spicy glazed wings served with blue cheese dip.
+                                </p>
+                            </div>
+                            <div class="text-red-600 font-bold text-lg">$8.00</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Courses -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-red-600 mb-6 border-b-2 border-red-600 pb-2">Main Courses
+                    </h3>
+
+                    <div class="space-y-6">
+                        <div class="flex justify-between border-b border-gray-300 pb-4">
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-900">Grilled Salmon</h4>
+                                <p class="text-gray-600 mt-1 text-sm">Fresh salmon fillet grilled with lemon butter
+                                    sauce.</p>
+                            </div>
+                            <div class="text-red-600 font-bold text-lg">$18.50</div>
+                        </div>
+
+                        <div class="flex justify-between border-b border-gray-300 pb-4">
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-900">Ribeye Steak</h4>
+                                <p class="text-gray-600 mt-1 text-sm">Juicy ribeye cooked to your preference, served
+                                    with mashed potatoes.</p>
+                            </div>
+                            <div class="text-red-600 font-bold text-lg">$24.00</div>
+                        </div>
+
+                        <div class="flex justify-between border-b border-gray-300 pb-4">
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-900">Vegetable Stir Fry</h4>
+                                <p class="text-gray-600 mt-1 text-sm">Fresh seasonal vegetables sautéed with garlic and
+                                    soy sauce.</p>
+                            </div>
+                            <div class="text-red-600 font-bold text-lg">$14.00</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desserts -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-red-600 mb-6 border-b-2 border-red-600 pb-2">Desserts</h3>
+
+                    <div class="space-y-6">
+                        <div class="flex justify-between border-b border-gray-300 pb-4">
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-900">Chocolate Lava Cake</h4>
+                                <p class="text-gray-600 mt-1 text-sm">Warm chocolate cake with a molten chocolate
+                                    center.</p>
+                            </div>
+                            <div class="text-red-600 font-bold text-lg">$7.50</div>
+                        </div>
+
+                        <div class="flex justify-between border-b border-gray-300 pb-4">
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-900">Cheesecake</h4>
+                                <p class="text-gray-600 mt-1 text-sm">Classic creamy cheesecake with a graham cracker
+                                    crust.</p>
+                            </div>
+                            <div class="text-red-600 font-bold text-lg">$6.75</div>
+                        </div>
+
+                        <div class="flex justify-between border-b border-gray-300 pb-4">
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-900">Fruit Tart</h4>
+                                <p class="text-gray-600 mt-1 text-sm">Seasonal fresh fruits on a crispy tart shell with
+                                    custard.</p>
+                            </div>
+                            <div class="text-red-600 font-bold text-lg">$6.00</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Beverages -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-red-600 mb-6 border-b-2 border-red-600 pb-2">Beverages</h3>
+
+                    <div class="space-y-6">
+                        <div class="flex justify-between border-b border-gray-300 pb-4">
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-900">Fresh Lemonade</h4>
+                                <p class="text-gray-600 mt-1 text-sm">Refreshing homemade lemonade with mint leaves.</p>
+                            </div>
+                            <div class="text-red-600 font-bold text-lg">$3.50</div>
+                        </div>
+
+                        <div class="flex justify-between border-b border-gray-300 pb-4">
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-900">Iced Coffee</h4>
+                                <p class="text-gray-600 mt-1 text-sm">Cold brewed coffee served over ice with cream.</p>
+                            </div>
+                            <div class="text-red-600 font-bold text-lg">$4.00</div>
+                        </div>
+
+                        <div class="flex justify-between border-b border-gray-300 pb-4">
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-900">Herbal Tea</h4>
+                                <p class="text-gray-600 mt-1 text-sm">A calming blend of herbs served hot.</p>
+                            </div>
+                            <div class="text-red-600 font-bold text-lg">$3.00</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-gradient-to-r from-red-500 via-pink-500 to-red-600 text-white py-16 px-6">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+
+            <div class="text-center md:text-left">
+                <h2 class="text-4xl font-extrabold mb-4 tracking-wide">Upcoming Events</h2>
+                <p class="text-lg max-w-md">
+                    Join us for exclusive restaurant events, live music nights, seasonal specials & more!
+                </p>
+            </div>
+
+            <div class="space-x-4">
+                <button
+                    class="bg-white text-red-600 font-semibold px-6 py-3 rounded shadow hover:bg-gray-100 transition">
+                    View All Events
+                </button>
+                <button class="border border-white px-6 py-3 rounded hover:bg-white hover:text-red-600 transition">
+                    Book Your Spot
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="py-16 bg-gray-100">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-4xl font-extrabold text-center text-gray-800 mb-12">What NEW?</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- New Item 1 -->
+                <div class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition">
+                    <h3 class="text-xl font-semibold mb-3 text-red-600">Seasonal Menu Launch</h3>
+                    <p class="text-gray-700 text-sm">
+                        Introducing our fresh seasonal menu with organic ingredients and exciting new flavors.
+                    </p>
+                </div>
+
+                <!-- New Item 2 -->
+                <div class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition">
+                    <h3 class="text-xl font-semibold mb-3 text-red-600">Live Music Nights</h3>
+                    <p class="text-gray-700 text-sm">
+                        Enjoy live performances every Friday and Saturday to enhance your dining experience.
+                    </p>
+                </div>
+
+                <!-- New Item 3 -->
+                <div class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition">
+                    <h3 class="text-xl font-semibold mb-3 text-red-600">Online Table Booking</h3>
+                    <p class="text-gray-700 text-sm">
+                        Now you can book your table online quickly and easily through our website.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="py-16 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-4xl font-extrabold text-center text-gray-800 mb-12">What Our Customers Say</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- Review 1 -->
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Reviewer 1"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Sarah Williams</h3>
+                            <div class="flex text-yellow-400">
+                                <!-- Star Rating -->
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 15l-5.878 3.09L5.64 12.18 1 8.545l6.06-.524L10 2l2.94 6.021 6.06.524-4.64 3.635 1.52 5.91z" />
+                                </svg>
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 15l-5.878 3.09L5.64 12.18 1 8.545l6.06-.524L10 2l2.94 6.021 6.06.524-4.64 3.635 1.52 5.91z" />
+                                </svg>
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 15l-5.878 3.09L5.64 12.18 1 8.545l6.06-.524L10 2l2.94 6.021 6.06.524-4.64 3.635 1.52 5.91z" />
+                                </svg>
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 15l-5.878 3.09L5.64 12.18 1 8.545l6.06-.524L10 2l2.94 6.021 6.06.524-4.64 3.635 1.52 5.91z" />
+                                </svg>
+                                <svg class="w-5 h-5 fill-current text-gray-300" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 15l-5.878 3.09L5.64 12.18 1 8.545l6.06-.524L10 2l2.94 6.021 6.06.524-4.64 3.635 1.52 5.91z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm">Amazing food and cozy atmosphere! The staff was super friendly and
+                        attentive. Highly recommend!</p>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Reviewer 2"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Michael Johnson</h3>
+                            <div class="flex text-yellow-400">
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 15l-5.878 3.09L5.64 12.18 1 8.545l6.06-.524L10 2l2.94 6.021 6.06.524-4.64 3.635 1.52 5.91z" />
+                                </svg>
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 15l-5.878 3.09L5.64 12.18 1 8.545l6.06-.524L10 2l2.94 6.021 6.06.524-4.64 3.635 1.52 5.91z" />
+                                </svg>
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 15l-5.878 3.09L5.64 12.18 1 8.545l6.06-.524L10 2l2.94 6.021 6.06.524-4.64 3.635 1.52 5.91z" />
+                                </svg>
+                                <svg class="w-5 h-5 fill-current text-gray-300" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 15l-5.878 3.09L5.64 12.18 1 8.545l6.06-.524L10 2l2.94 6.021 6.06.524-4.64 3.635 1.52 5.91z" />
+                                </svg>
+                                <svg class="w-5 h-5 fill-current text-gray-300" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 15l-5.878 3.09L5.64 12.18 1 8.545l6.06-.524L10 2l2.94 6.021 6.06.524-4.64 3.635 1.52 5.91z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm">Good variety of dishes, but I wish the waiting time was shorter.
+                        Overall, nice experience.</p>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/25.jpg" alt="Reviewer 3"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Emily Clark</h3>
+                            <div class="flex text-yellow-400">
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 15l-5.878 3.09L5.64 12.18 1 8.545l6.06-.524L10 2l2.94 6.021 6.06.524-4.64 3.635 1.52 5.91z" />
+                                </svg>
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 15l-5.878 3.09L5.64 12.18 1 8.545l6.06-.524L10 2l2.94 6.021 6.06.524-4.64 3.635 1.52 5.91z" />
+                                </svg>
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 15l-5.878 3.09L5.64 12.18 1 8.545l6.06-.524L10 2l2.94 6.021 6.06.524-4.64 3.635 1.52 5.91z" />
+                                </svg>
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 15l-5.878 3.09L5.64 12.18 1 8.545l6.06-.524L10 2l2.94 6.021 6.06.524-4.64 3.635 1.52 5.91z" />
+                                </svg>
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 15l-5.878 3.09L5.64 12.18 1 8.545l6.06-.524L10 2l2.94 6.021 6.06.524-4.64 3.635 1.52 5.91z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm">Lovely ambiance and delicious desserts! Will definitely come back
+                        soon.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer" class="bg-gray-900 text-gray-300 py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+                <!-- Logo and About -->
+                <div class="text-center md:text-left">
+                    <div class="text-3xl font-extrabold text-red-600 mb-4 select-none cursor-default">Foodie</div>
+                    <p class="text-gray-400 text-sm max-w-sm mx-auto md:mx-0">
+                        We are passionate about delivering the best dining experience with delicious food and excellent
+                        service.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-xl font-semibold mb-4 text-white">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#menu" class="hover:text-red-500 transition">Menu</a></li>
+                        <li><a href="#events" class="hover:text-red-500 transition">Events</a></li>
+                        <li><a href="#booking" class="hover:text-red-500 transition">Booking</a></li>
+                        <li><a href="#contact" class="hover:text-red-500 transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-xl font-semibold mb-4 text-white">Contact Us</h3>
+                    <p class="text-gray-400 text-sm mb-2">123 Foodie Street, Flavor Town, FT 45678</p>
+                    <p class="text-gray-400 text-sm mb-2">Phone: (123) 456-7890</p>
+                    <p class="text-gray-400 text-sm">Email: info@restaurant.com</p>
+                </div>
+            </div>
+
+            <!-- Bottom -->
+            <div class="border-t border-gray-700 mt-10 pt-6 text-center text-gray-500 text-sm">
+                &copy; 2025 <span class="text-red-500 font-semibold">Foodie</span>. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Back to Top Button -->
+    <a href="#top" id="backToTopBtn"
+        class="hidden fixed bottom-6 right-6 bg-red-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-red-700 transition-all z-50">
+        ↑ Top
+    </a>
+
+    <!-- Script -->
+    <script>
+        const backToTopBtn = document.getElementById("backToTopBtn");
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove("hidden");
+            } else {
+                backToTopBtn.classList.add("hidden");
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>
