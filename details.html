@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Restaurant</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -18,7 +18,7 @@
     }
 </style>
 
-<body>
+<body class="bg-gray-100">
     <!-- Navbar -->
     <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300">
         <nav class="max-w-7xl mx-auto flex justify-between items-center p-4">
@@ -97,87 +97,31 @@
             dropdownMenu.classList.toggle('hidden');
         });
     </script>
-    <section id="blog" class="py-16 bg-white">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12 lg:my-[50px]">GrapeR Blogs</h2>
-
-            <!-- Blog 1 (Left Text, Right Image) -->
-            <div class="flex flex-col md:flex-row items-center gap-10 mb-16">
-                <div class="md:w-1/2 text-center md:text-left">
-                    <h3 class="text-2xl font-bold mb-2 text-gray-800">Chef’s Secret Ingredients</h3>
-                    <p class="text-gray-600 mb-4 text-sm">
-                        Discover the unique ingredients our chefs use to bring out unforgettable flavors in every dish.
-                    </p>
-                    <a href="details.html" class="text-red-600 text-sm font-semibold hover:underline">Read More →</a>
-                </div>
-                <img src="images/fff (3).jpg" alt="Blog 1"
-                    class="md:w-1/2 rounded-lg shadow-lg object-cover h-64 w-full">
+    <div class="max-w-6xl mx-auto bg-white p-8 rounded-lg shadow-lg mt-12">
+        <div class="flex flex-col md:flex-row gap-10">
+            <!-- বড় ছবি -->
+            <div class="md:w-2/3">
+                <img src="images/fff (3).jpg"
+                    alt="Delicious Food" class="w-full h-auto rounded-lg object-cover" />
             </div>
 
-            <!-- Blog 2 (Left Image, Right Text) -->
-            <div class="flex flex-col md:flex-row-reverse items-center gap-10 mb-16">
-                <div class="md:w-1/2 text-center md:text-left">
-                    <h3 class="text-2xl font-bold mb-2 text-gray-800">Secrets of Perfect Grilling</h3>
-                    <p class="text-gray-600 mb-4 text-sm">
-                        From beef to veggies — how our kitchen ensures everything is grilled to perfection.
-                    </p>
-                    <a href="details.html" class="text-red-600 text-sm font-semibold hover:underline">Read More →</a>
-                </div>
-                <img src="images/f1.jpg" alt="Blog 2" class="md:w-1/2 rounded-lg shadow-lg object-cover h-64 w-full">
-            </div>
+            <!-- প্রোডাক্ট ডিটেইলস -->
+            <div class="md:w-1/3 flex flex-col justify-start">
+                <h1 class="text-4xl font-extrabold mb-6 text-gray-900">Delicious Burger</h1>
+                <p class="text-gray-700 mb-6 leading-relaxed">
+                    Enjoy our juicy and freshly grilled burger made with premium quality beef, fresh lettuce, ripe
+                    tomatoes, melted cheese, and our secret special sauce. Perfect for a quick lunch or satisfying
+                    dinner. Comes with crispy fries on the side.
+                </p>
+                <p class="text-3xl font-semibold text-green-600 mb-8">$8.99</p>
 
-            <!-- Blog 3 (Left Text, Right Image) -->
-            <div class="flex flex-col md:flex-row items-center gap-10 mb-16">
-                <div class="md:w-1/2 text-center md:text-left">
-                    <h3 class="text-2xl font-bold mb-2 text-gray-800">Healthy Yet Tasty</h3>
-                    <p class="text-gray-600 mb-4 text-sm">
-                        Learn how we balance health and taste with fresh, organic, and locally sourced ingredients.
-                    </p>
-                    <a href="#details.html" class="text-red-600 text-sm font-semibold hover:underline">Read More →</a>
-                </div>
-                <img src="images/f2.jpg" alt="Blog 3" class="md:w-1/2 rounded-lg shadow-lg object-cover h-64 w-full">
+                <button
+                    class="bg-green-600 text-white py-3 rounded-md hover:bg-green-700 transition-colors font-semibold">
+                    Add to Cart
+                </button>
             </div>
-
-            <!-- Blog 4 (Left Image, Right Text) -->
-            <div class="flex flex-col md:flex-row-reverse items-center gap-10 mb-16">
-                <div class="md:w-1/2 text-center md:text-left">
-                    <h3 class="text-2xl font-bold mb-2 text-gray-800">Our Signature Desserts</h3>
-                    <p class="text-gray-600 mb-4 text-sm">
-                        From chocolate lava cakes to French macarons — meet the stars of our sweet menu.
-                    </p>
-                    <a href="details.html" class="text-red-600 text-sm font-semibold hover:underline">Read More →</a>
-                </div>
-                <img src="images/f3.jpg" alt="Blog 4" class="md:w-1/2 rounded-lg shadow-lg object-cover h-64 w-full">
-            </div>
-
-            <!-- Blog 5 (Left Text, Right Image) -->
-            <div class="flex flex-col md:flex-row items-center gap-10 mb-16">
-                <div class="md:w-1/2 text-center md:text-left">
-                    <h3 class="text-2xl font-bold mb-2 text-gray-800">Meet Our Head Chef</h3>
-                    <p class="text-gray-600 mb-4 text-sm">
-                        A journey of passion and perfection — how Chef James became the heart of GrapeR’s kitchen.
-                    </p>
-                    <a href="details.html" class="text-red-600 text-sm font-semibold hover:underline">Read More →</a>
-                </div>
-                <img src="images/ff (1).jpg" alt="Blog 5"
-                    class="md:w-1/2 rounded-lg shadow-lg object-cover h-64 w-full">
-            </div>
-
-            <!-- Blog 6 (Left Image, Right Text) -->
-            <div class="flex flex-col md:flex-row-reverse items-center gap-10">
-                <div class="md:w-1/2 text-center md:text-left">
-                    <h3 class="text-2xl font-bold mb-2 text-gray-800">Behind the Kitchen Doors</h3>
-                    <p class="text-gray-600 mb-4 text-sm">
-                        Go behind the scenes of our kitchen — teamwork, preparation, and the energy that creates magic.
-                    </p>
-                    <a href="details.html" class="text-red-600 text-sm font-semibold hover:underline">Read More →</a>
-                </div>
-                <img src="images/fff (3).jpg" alt="Blog 6"
-                    class="md:w-1/2 rounded-lg shadow-lg object-cover h-64 w-full">
-            </div>
-
         </div>
-    </section>
+    </div>
     <footer id="footer" class="bg-gray-900 text-gray-300 py-12">
         <div class="max-w-6xl mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -217,7 +161,6 @@
             </div>
         </div>
     </footer>
-
 </body>
 
 </html>
