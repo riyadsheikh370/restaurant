@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    #navbar {
+        background-color: transparent;
+    }
+
+    #navbar.scrolled {
+        background-color: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+</style>
+
+<body>
+    <!-- Navbar -->
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300">
+        <nav class="max-w-7xl mx-auto flex justify-between items-center p-4">
+            <h1 class="text-2xl font-bold text-red-600">GrapeR</h1>
+
+            <!-- Desktop Menu -->
+            <ul class="hidden md:flex gap-6 text-gray-700 font-medium relative">
+                <li><a href="index.html" class="hover:text-red-600">Home</a></li>
+
+                <!-- Dropdown Menu -->
+                <li class="relative group">
+                    <a href="index.html/#menu" class="hover:text-red-600 cursor-pointer">Menu</a>
+                    <ul
+                        class="absolute left-0 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white shadow-lg rounded-md py-2 mt-2 w-40 text-sm z-10">
+                        <li><a href="index.html/#menu" class="block px-4 py-2 hover:bg-red-100">Breakfast</a></li>
+                        <li><a href="index.html/#menu" class="block px-4 py-2 hover:bg-red-100">Lunch</a></li>
+                        <li><a href="index.html/#menu" class="block px-4 py-2 hover:bg-red-100">Dinner</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="index.html/#booking" class="hover:text-red-600">Table</a></li>
+                <li><a href="blog.html" class="hover:text-red-600">Blog</a></li>
+                <li><a href="index.html/#footer" class="hover:text-red-600">Contact</a></li>
+            </ul>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="menuBtn" class="text-2xl text-gray-700 focus:outline-none">
+                    ☰
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white px-6 pb-4 shadow">
+            <ul class="flex flex-col gap-2">
+                <li><a href="index.html" class="block py-2 border-b hover:text-red-600">Home</a></li>
+
+                <!-- Mobile Dropdown -->
+                <li>
+                    <button id="dropdownBtn" class="w-full text-left py-2 border-b hover:text-red-600">
+                        Menu ▼
+                    </button>
+                    <ul id="dropdownMenu" class="hidden flex flex-col pl-4 border-l border-red-100">
+                        <li><a href="#menu" class="block py-1 text-sm hover:text-red-600">Breakfast</a></li>
+                        <li><a href="#menu" class="block py-1 text-sm hover:text-red-600">Lunch</a></li>
+                        <li><a href="#menu" class="block py-1 text-sm hover:text-red-600">Dinner</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#booking" class="block py-2 border-b hover:text-red-600">Table</a></li>
+                <li><a href="blog.html" class="hover:text-red-600">Blog</a></li>
+                <li><a href="#footer" class="block py-2 hover:text-red-600">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Scripts -->
+    <script>
+        // Scroll navbar effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Mobile dropdown toggle
+        const dropdownBtn = document.getElementById('dropdownBtn');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        dropdownBtn.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('hidden');
+        });
+    </script>
+    <section id="blog" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12 lg:my-[50px]">GrapeR Blogs</h2>
+
+            <!-- Blog 1 (Left Text, Right Image) -->
+            <div class="flex flex-col md:flex-row items-center gap-10 mb-16">
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h3 class="text-2xl font-bold mb-2 text-gray-800">Chef’s Secret Ingredients</h3>
+                    <p class="text-gray-600 mb-4 text-sm">
+                        Discover the unique ingredients our chefs use to bring out unforgettable flavors in every dish.
+                    </p>
+                    <a href="#" class="text-red-600 text-sm font-semibold hover:underline">Read More →</a>
+                </div>
+                <img src="images/fff (3).jpg" alt="Blog 1"
+                    class="md:w-1/2 rounded-lg shadow-lg object-cover h-64 w-full">
+            </div>
+
+            <!-- Blog 2 (Left Image, Right Text) -->
+            <div class="flex flex-col md:flex-row-reverse items-center gap-10 mb-16">
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h3 class="text-2xl font-bold mb-2 text-gray-800">Secrets of Perfect Grilling</h3>
+                    <p class="text-gray-600 mb-4 text-sm">
+                        From beef to veggies — how our kitchen ensures everything is grilled to perfection.
+                    </p>
+                    <a href="#" class="text-red-600 text-sm font-semibold hover:underline">Read More →</a>
+                </div>
+                <img src="images/f1.jpg" alt="Blog 2" class="md:w-1/2 rounded-lg shadow-lg object-cover h-64 w-full">
+            </div>
+
+            <!-- Blog 3 (Left Text, Right Image) -->
+            <div class="flex flex-col md:flex-row items-center gap-10 mb-16">
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h3 class="text-2xl font-bold mb-2 text-gray-800">Healthy Yet Tasty</h3>
+                    <p class="text-gray-600 mb-4 text-sm">
+                        Learn how we balance health and taste with fresh, organic, and locally sourced ingredients.
+                    </p>
+                    <a href="#" class="text-red-600 text-sm font-semibold hover:underline">Read More →</a>
+                </div>
+                <img src="images/f2.jpg" alt="Blog 3" class="md:w-1/2 rounded-lg shadow-lg object-cover h-64 w-full">
+            </div>
+
+            <!-- Blog 4 (Left Image, Right Text) -->
+            <div class="flex flex-col md:flex-row-reverse items-center gap-10 mb-16">
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h3 class="text-2xl font-bold mb-2 text-gray-800">Our Signature Desserts</h3>
+                    <p class="text-gray-600 mb-4 text-sm">
+                        From chocolate lava cakes to French macarons — meet the stars of our sweet menu.
+                    </p>
+                    <a href="#" class="text-red-600 text-sm font-semibold hover:underline">Read More →</a>
+                </div>
+                <img src="images/f3.jpg" alt="Blog 4" class="md:w-1/2 rounded-lg shadow-lg object-cover h-64 w-full">
+            </div>
+
+            <!-- Blog 5 (Left Text, Right Image) -->
+            <div class="flex flex-col md:flex-row items-center gap-10 mb-16">
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h3 class="text-2xl font-bold mb-2 text-gray-800">Meet Our Head Chef</h3>
+                    <p class="text-gray-600 mb-4 text-sm">
+                        A journey of passion and perfection — how Chef James became the heart of GrapeR’s kitchen.
+                    </p>
+                    <a href="#" class="text-red-600 text-sm font-semibold hover:underline">Read More →</a>
+                </div>
+                <img src="images/ff (1).jpg" alt="Blog 5"
+                    class="md:w-1/2 rounded-lg shadow-lg object-cover h-64 w-full">
+            </div>
+
+            <!-- Blog 6 (Left Image, Right Text) -->
+            <div class="flex flex-col md:flex-row-reverse items-center gap-10">
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h3 class="text-2xl font-bold mb-2 text-gray-800">Behind the Kitchen Doors</h3>
+                    <p class="text-gray-600 mb-4 text-sm">
+                        Go behind the scenes of our kitchen — teamwork, preparation, and the energy that creates magic.
+                    </p>
+                    <a href="#" class="text-red-600 text-sm font-semibold hover:underline">Read More →</a>
+                </div>
+                <img src="images/fff (3).jpg" alt="Blog 6"
+                    class="md:w-1/2 rounded-lg shadow-lg object-cover h-64 w-full">
+            </div>
+
+        </div>
+    </section>
+    <footer id="footer" class="bg-gray-900 text-gray-300 py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+                <!-- Logo and About -->
+                <div class="text-center md:text-left">
+                    <div class="text-3xl font-extrabold text-red-600 mb-4 select-none cursor-default">GrapeR</div>
+                    <p class="text-gray-400 text-sm max-w-sm mx-auto md:mx-0">
+                        We are passionate about delivering the best dining experience with delicious food and excellent
+                        service.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-xl font-semibold mb-4 text-white">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#menu" class="hover:text-red-500 transition">Menu</a></li>
+                        <li><a href="#events" class="hover:text-red-500 transition">Events</a></li>
+                        <li><a href="#booking" class="hover:text-red-500 transition">Booking</a></li>
+                        <li><a href="#contact" class="hover:text-red-500 transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-xl font-semibold mb-4 text-white">Contact Us</h3>
+                    <p class="text-gray-400 text-sm mb-2">123 Foodie Street, Flavor Town, FT 45678</p>
+                    <p class="text-gray-400 text-sm mb-2">Phone: (123) 456-7890</p>
+                    <p class="text-gray-400 text-sm">Email: info@restaurant.com</p>
+                </div>
+            </div>
+
+            <!-- Bottom -->
+            <div class="border-t border-gray-700 mt-10 pt-6 text-center text-gray-500 text-sm">
+                &copy; 2025 <span class="text-red-500 font-semibold">GrapeR</span>. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
